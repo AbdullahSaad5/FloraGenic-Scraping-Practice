@@ -16,10 +16,6 @@ async function run(disease) {
     // Visit the page
     await page.goto(URL);
 
-    // Wait for the required DOM to be rendered
-    const body = await page.$("body");
-    const html = await page.evaluate((body) => body.innerHTML, body);
-
     // Get the appropriate link and click it
     let linkHandlers = await page.$x(`//a[contains(text(), '${disease}')]`);
     if (linkHandlers.length > 0) {
@@ -85,6 +81,6 @@ const getSpecificSection = async (sectionName, page) => {
   return sectionContent;
 };
 
-run("Black knot").then((sectionContents) => {
+run("Cedar-apple rust").then((sectionContents) => {
   console.log(sectionContents);
 });
